@@ -1,0 +1,18 @@
+<div style="border-width: thin; border-style: solid; border-color: #C0BEBE; display: inline-flex; border-radius: 4px;">
+    <div style="padding: 6px; padding-top: 9px;">
+        <input class="input-style" 
+            type="text"
+            [style.width]="inputWidth()" 
+            [style.height]="inputHeight()"
+            [placeholder]="placeholder()" 
+            [value]="value()" 
+            [disabled]="disabled" 
+            (input)="onInput($event)" 
+            (blur)="onBlur()" 
+            mask="separator.2"
+            thousandSeparator="."
+            decimalMarker=","
+            prefix="R$ "
+        />
+    </div>
+</div>

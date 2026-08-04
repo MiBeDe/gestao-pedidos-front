@@ -1,0 +1,36 @@
+
+<div style="border-width: thin; border-style: solid; border-color: #C0BEBE; display: inline-flex; border-radius: 4px;">
+    @if(textRefIcon()){
+        <div style="padding: 6px; padding-left: 30px;">
+            <span class="material-icons" style="font-size: 40px; color: #747D8E;">
+                {{textRefIcon()}}
+            </span>
+        </div>
+    }
+    <div [class]="inputDisabled() ? 'div-input div-input-disabled' :  'div-input'">
+        <input class="input-style" 
+               [type]="type()"
+               [style.width]="inputWidth()" 
+               [style.height]="inputHeight()"
+               [placeholder]="placeholder()" 
+               [value]="value()" 
+               [disabled]="disabled" 
+               (input)="onInput($event)" 
+               (blur)="onBlur()" 
+               [mask]="mask()"
+               [disabled]="inputDisabled()"
+               
+        />
+    </div>
+    @if(inputCategory() == 'password'){
+        <div style="padding: 6px; padding-right: 30px; padding-top: 7px;">
+            <span class="material-icons" style="font-size: 40px; color: #747D8E; cursor: pointer;" (click)="visibilityPassword.emit()">
+                @if(type() == 'password'){
+                    visibility
+                }@else{
+                    visibility_off
+                }
+            </span>
+        </div>
+    }      
+</div>

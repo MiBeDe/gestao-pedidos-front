@@ -1,0 +1,56 @@
+@use '../../../shared/fonts/shared-styles' as shared;
+
+.custom-dropdown {
+ position: relative;
+ width: 100%; 
+ input {
+     width: 100%;
+     height: 40px;
+     padding: 0 40px 0 12px;
+     border: 1px solid #CCC;
+     border-radius: 4px;
+     outline: none;
+ } 
+ .arrow {
+     position: absolute;
+     right: 10px;
+     top: 50%;
+     transform: translateY(-50%);
+     pointer-events: none;
+ }
+}
+
+.dropdown-list {
+
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;   
+    max-height: 250px;  
+    overflow-y: auto;   
+    list-style: none;   
+    margin: 0;  
+    padding: 0; 
+    background: white;  
+    border: 1px solid #DDD; 
+    border-radius: 4px; 
+    z-index: 1000;  
+    li {    
+        padding: 10px;  
+        cursor: pointer;    
+        &:hover,
+        &.selected {    
+            background: #1976d2;
+            color: white;   
+        }   
+    }   
+    .empty {    
+        cursor: default;
+        color: gray;    
+        &:hover {   
+            background: white;
+            color: gray;    
+        }   
+    }
+
+}

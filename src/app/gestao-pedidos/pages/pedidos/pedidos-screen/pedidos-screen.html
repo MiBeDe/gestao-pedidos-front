@@ -1,0 +1,133 @@
+<div class="container">
+    <div class="title-page">
+        <span>Pedidos</span>
+    </div>
+    <div class="sub-title-page">
+         <span>Visualize e gerencie os pedidos</span>
+    </div>
+
+     <div class="div-container-body">
+        <div class="div-wrapper-button">
+            <div class="btn-style" routerLink="/pedidos/novo">
+                <div class="wrapper-icon-button">
+                    <span class="material-icons" style="font-size: 22px;">
+                        add
+                    </span>
+                </div>
+                
+                <div class="btn-text">
+                    <span>Novo Pedido</span>
+                </div>
+            </div>
+        </div>
+        <div>
+
+            <!-- Tabela -->
+            <table>
+                <tr style="background-color: #F4F6FA;">
+                    <th class="column-style-grid-first" style="width: 8vw;">Pedido</th>
+                    <th class="column-style-grid" style="width: 45vw;">Cliente</th>
+                    <th class="column-style-grid" style="width: 5vw;">Valor Total</th>
+                    <th class="column-style-grid" style="width: 10vw; text-align: center;">Status</th>
+                    <th class="column-style-grid-end" style="width: 10vw; text-align: center;">Ações</th>
+                </tr>
+                @if(pagedResult() != null){
+                    @if(pagedResult().itens.length > 0){
+                        @for (item of pagedResult().itens; track item.idPedido){
+                            <tr class="field-style-text-dados">
+                                    <td class="column-style-dados-grid-with-initial-space">
+                                        {{item.idPedido}}
+                                    </td>
+                                    <td class="column-style-dados-grid">
+                                        {{item.cliente.nomeCompleto}}
+                                    </td>
+                                    <td class="column-style-dados-grid">
+                                        {{item.valorTotalPedido | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}
+                                    </td>
+                                    <td class="column-style-dados-grid">
+                                        <div style="display: flex; justify-content: center;">
+                                            @if(item.statusPedido.idStatus == 1){
+                                                <div class="status-criado">
+                                                    <div class="status-criado-text">
+                                                        <span>{{item.statusPedido.descricao}}</span>
+                                                    </div>
+                                                </div>
+                                            }@else if(item.statusPedido.idStatus == 2){
+                                                <div class="status-confirmado">
+                                                    <div class="status-confirmado-text">
+                                                        <span>Confirmado</span>
+                                                    </div>
+                                                </div>
+                                            }@else if(item.statusPedido.idStatus == 3){
+                                                <div class="status-cancelado">
+                                                    <div class="status-cancelado-text">
+                                                        <span>Cancelado</span>
+                                                    </div>
+                                                </div>
+                                            }@else if(item.statusPedido.idStatus == 4){
+                                                <div class="status-finalizado">
+                                                    <div class="status-finalizado-text">
+                                                        <span>Finalizado</span>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+
+                                    </td>
+                                    <td class="column-style-dados-grid">
+                                        @if(item.statusPedido.idStatus == 1){
+                                            <div style="display: flex; gap: 8px; justify-content: center;">
+                                                <div class="btn-acao-confirmar" (click)="alterarStatusPedido(item.idPedido, 2)">
+                                                    <div class="btn-acao-confirmar-text">
+                                                        <span>Confirmar</span>
+                                                    </div>
+                                                </div>
+                                                <div class="btn-acao-cancelar" (click)="alterarStatusPedido(item.idPedido, 3)">
+                                                    <div class="btn-acao-cancelar-text">
+                                                        <span>Cancelar</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        @if(item.statusPedido.idStatus == 2){
+                                            <div style="display: flex; gap: 8px; justify-content: center;">
+                                                <div class="btn-acao-finalizar" (click)="alterarStatusPedido(item.idPedido, 4)">
+                                                    <div class="btn-acao-finalizar-text">
+                                                        <span>Finalizar</span>
+                                                    </div>
+                                                </div>
+                                                <div class="btn-acao-cancelar" (click)="alterarStatusPedido(item.idPedido, 3)">
+                                                    <div class="btn-acao-cancelar-text">
+                                                        <span>Cancelar</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </td>
+                            </tr>
+                        }
+                    }@else{
+                        <tr>
+                           <td colspan="5" class="column-style-dados-grid" style="text-align: center; padding-top: 10px;">
+                               <span>Não há dados para serem exibidos.</span>
+                           </td>
+                        </tr>
+                    } 
+                }         
+                <tr>
+                    <td [attr.colspan]="5">
+                        <mat-paginator [length]="pagedResult() != null ? pagedResult().totalRegistros : 0" 
+                                   [pageSize]="tamanhoPagina()"
+                                   [pageSizeOptions]="[10, 20, 30]"
+                                   [pageIndex]="pageIndex()"
+                                   (page)="onPageChange($event)"
+                                   aria-label="Select page">
+                        </mat-paginator>
+                    </td>
+                
+                </tr>
+            </table>
+
+        </div>
+     </div>
+</div>

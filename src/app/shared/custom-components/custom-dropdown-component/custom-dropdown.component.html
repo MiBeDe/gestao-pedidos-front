@@ -1,0 +1,49 @@
+<div class="custom-dropdown" #container [style.width]="inputWidth()">
+
+    <input
+        #input
+        type="text"
+        [value]="search()"
+        (focus)="open()"
+        (input)="onSearch(input.value)"
+        (keydown)="onKeyDown($event)"
+        placeholder="Selecione..." 
+        [disabled]="inputDisabled()"
+        />
+
+    <span class="material-icons arrow">
+        expand_more
+    </span>
+
+    @if (opened()) {
+
+        <ul class="dropdown-list">
+
+            @if(filteredData().length == 0){
+                <li class="empty">
+                    Nenhum resultado encontrado
+                </li>
+            }
+
+            @for (
+                item of filteredData();
+                track item[fieldTrack()];
+                let index = $index
+            ) {
+
+                <li
+                    [class.selected]="index === highlightedIndex()"
+                    (click)="select(item)"
+                    (mouseenter)="highlightedIndex.set(index)">
+
+                    {{ item[fieldLabel()] }}
+
+                </li>
+
+            }
+
+        </ul>
+
+    }
+
+</div>

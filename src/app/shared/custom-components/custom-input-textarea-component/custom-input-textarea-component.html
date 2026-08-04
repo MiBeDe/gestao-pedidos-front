@@ -1,0 +1,11 @@
+<div>
+    <textarea class="input-style"
+        [style.width]="inputWidth()" 
+        [style.height]="inputHeight()"
+        [placeholder]="placeholder()"
+        [value]="value"
+        [disabled]="disabled"
+        (input)="onInput($event)"
+        (blur)="onBlur()"
+    ></textarea>
+</div>

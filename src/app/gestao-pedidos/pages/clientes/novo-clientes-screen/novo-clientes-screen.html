@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="title-page">
+        <span>Novo Cliente</span>
+    </div>
+    <div class="sub-title-page">
+         <span>Realizar cadastro de um novo Cliente</span>
+    </div>
+
+    <div class="wrapper-card-body">
+        <div class="card-cadastro">
+
+            <form [formGroup]="form">
+                <div>
+                    <div class="input-nome-completo">
+                        <div class="div-input-header-nome-completo">
+                            <span>Nome Completo</span><span style="color: red !important">*</span>
+                        </div>
+                        <div>
+                            <app-custom-input 
+                                formControlName="inputNomeCompleto"
+                                inputWidth="550px"
+                                inputHeight="20px"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="input-cpf">
+                        <div class="div-input-header-cpf">
+                            <span>CPF</span><span style="color: red !important">*</span>
+                        </div>
+                        <div>
+                            <app-custom-input 
+                                formControlName="inputCpf"
+                                inputWidth="550px"
+                                inputHeight="20px"
+                                [mask]="'000.000.000-00'"
+                            />
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            
+            
+            <div class="div-wrapper-button">
+                <div class="btn-style" (click)="salvarCliente()">
+                    <div class="wrapper-icon-button">
+                        <span class="material-icons" style="font-size: 22px;">
+                            save
+                        </span>
+                    </div>
+                    
+                    <div class="btn-text">
+                        <span>Salvar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<table>    
+    <tr style="background-color: #F4F6FA;">
+        @for (column of columns(); track column.column; let index = $index ) {
+            <th [class]="index == 0 ? 'column-style-grid-first ' + 'header-'+column.column : (columns().length - 1) == index ? 'column-style-grid-end ' + 'header-'+column.column : 'column-style-grid ' + 'header-'+column.column " [style.width]="column.columnWith">
+                 {{column.header}}
+             </th>
+        }       
+    </tr>
+    
+    @if(data().length > 0){
+        @for (dados of data(); track dados[keyFieldTrack()]) {     
+            <tr class="field-style-text-dados">
+                @for (column of columns(); track column.column;) {
+                   <td [class]=" column.column == columns()[0].column ? 'column-style-dados-grid-with-initial-space ' + 'td-'+column.column : 'column-style-dados-grid ' + 'td-'+column.column">
+                        <div [class]="column.column">
+                            @if (column.mask){
+                                {{ dados[column.column] | mask: column.mask }}
+                            }
+                            @else if(column.currency){   
+                                {{ dados[column.column] | currency: 
+                                    column.currency.code :  
+                                    column.currency.display:
+                                    column.currency.digitsInfo:
+                                    column.currency.locale}}
+                            } @else{
+                                {{ dados[column.column]  }}
+                            }
+                        </div>
+                   </td>
+                }
+            </tr>
+        }
+    }@else {
+        <tr>
+            <td colspan="5" class="column-style-dados-grid" style="text-align: center; padding-top: 10px;">
+                <span>Não há dados para serem exibidos.</span>
+            </td>
+        </tr>
+    }
+    
+    <tr>
+        <td [attr.colspan]="columns().length">
+            <mat-paginator [length]="totalRegistros()"
+                       [pageSize]="tamanhoPagina()"
+                       [pageSizeOptions]="[10, 20, 30]"
+                       [pageIndex]="pageIndex()"
+                       (page)="page.emit($event)"
+                       aria-label="Select page">
+            </mat-paginator>
+        </td>
+    
+    </tr>
+    
+</table>
+
+<div>
+    &nbsp;
+</div>

@@ -1,0 +1,225 @@
+<div class="container">
+    <div class="title-page">
+        <span>Novo Pedido</span>
+    </div>
+    <div class="sub-title-page">
+         <span>Selecione o cliente e adicione os produtos</span>
+    </div>
+
+    @if(clientesDropdown().length == 0 || produtosDropdown().length == 0){
+        <div class="container-configs">
+            <div class="card-configs">
+                <div class="div-icon-info">
+                    <span class="material-icons icon-info">
+                        info
+                    </span>
+                </div>
+                <div>
+                    <div class="header-info">
+                        <span>
+                            Configurações
+                        </span>
+                    </div>
+                    <div class="header-info-text">
+                        <div class="header-info-text-with-icon">
+                            <div>
+                                @if(clientesDropdown().length > 0){
+                                    <span class="material-icons icon-done">
+                                        done
+                                    </span>
+                                }@else {
+                                    <span class="material-icons icon-warning">
+                                        warning
+                                    </span>
+                                }
+
+                            </div>
+                            <div style="padding-left: 5px; padding-bottom: 2px;">
+                                <span>
+                                    É necessário cadastrar ao menos 1 Cliente.
+                                </span>
+                            </div>
+                        </div>
+                        <div class="header-info-text-with-icon">
+                            <div>
+                                @if(produtosDropdown().length > 0){
+                                    <span class="material-icons icon-done">
+                                        done
+                                    </span>
+                                }@else {
+                                    <span class="material-icons icon-warning">
+                                        warning
+                                    </span>
+                                }
+                            </div>
+                            <div style="padding-left: 5px; padding-bottom: 2px;">
+                                <span>
+                                    É necessário cadastrar ao menos 1 Produto.
+                                </span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>    
+    }
+    
+    <div>
+        <form [formGroup]="form">
+            <div class="wrapper-card-body">
+               <div class="card-cadastro">
+                   <div class="header-title-add-pedido">
+                       <span>Dados Cliente</span>
+                   </div>
+                   <div class="container-inputs-line1">
+                        <div class="input-dropdown-cliente">
+                            <div class="div-input-dropdown-header-cliente">
+                                <span>Cliente</span><span style="color: red !important">*</span>
+                            </div>
+                            <div>
+                                <app-custom-dropdown-component 
+                                    [data]="clientesDropdown()"
+                                    [fieldTrack]="'idCliente'"
+                                    [fieldValue]="'idCliente'"
+                                    [fieldLabel]="'nomeCompleto'"
+                                    formControlName="dropdownCliente"
+                                    [inputWidth]="'20vw'"
+                                    [inputDisabled]="(clientesDropdown().length > 0 && produtosDropdown().length > 0) ? false : true"
+                                />
+                            </div>
+                        </div>
+                   </div>
+                   
+                   <mat-divider></mat-divider>
+
+                   <div class="header-title-add-pedido">
+                       <span>Itens do Pedido</span>
+                   </div>
+
+                   <div class="container-inputs-line2">
+                        <div class="input-dropdown-produto">
+                            <div class="div-input-dropdown-header-produto">
+                                <span>Produto</span><span style="color: red !important">*</span>
+                            </div>
+                            <div>
+                                <app-custom-dropdown-component 
+                                    [data]="produtosDropdown()"
+                                    [fieldTrack]="'idProduto'"
+                                    [fieldValue]="'idProduto'"
+                                    [fieldLabel]="'nomeProduto'"
+                                    formControlName="dropdownProduto"
+                                    [inputWidth]="'45vw'"
+                                    [inputDisabled]="(clientesDropdown().length > 0 && produtosDropdown().length > 0) ? false : true"
+                                />
+                            </div>
+                        </div>
+                        <div class="input-quantidade">
+                            <div class="div-input-header-quantidade">
+                                <span>Quantidade</span><span style="color: red !important">*</span>
+                            </div>
+                            <div>
+                                <app-custom-input 
+                                    formControlName="inputQuantidade"
+                                    inputWidth="10vw"
+                                    inputHeight="23px"
+                                    [mask]="'0000'"
+                                    [inputDisabled]="(clientesDropdown().length > 0 && produtosDropdown().length > 0) ? false : true"
+                                />
+                            </div>
+                        </div>
+                        <div class="div-wrapper-button">
+                            <div class="btn-style" (click)="(clientesDropdown().length > 0 && produtosDropdown().length > 0) ? adicionarItem() : null">
+                                <div class="wrapper-icon-button">
+                                    <span class="material-icons" style="font-size: 22px;">
+                                        shopping_cart
+                                    </span>
+                                </div>
+                                <div class="btn-text">
+                                    <span>Adicionar</span>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                    
+
+                    <div class="container-grid">
+                        <table>
+                            <tr style="background-color: #F4F6FA;">
+                                <th class="column-style-grid-first" style="width: 35vw;">Produto</th>
+                                <th class="column-style-grid" style="width: 8vw;">Quantidade</th>
+                                <th class="column-style-grid" style="width: 8vw;">Preço Unitário</th>
+                                <th class="column-style-grid" style="width: 8vw;">Subtotal</th>
+                                <th class="column-style-grid-end" style="width: 8vw; text-align: center;">Ações</th>
+                            </tr>
+                            
+                            @if(produtosSelecionados().length != 0){
+                                    @for (item of produtosSelecionados(); track item.idProduto){
+                                        <tr class="field-style-text-dados">
+                                            <td class="column-style-dados-grid-with-initial-space">
+                                                {{item.nomeProduto}}
+                                            </td>
+                                            <td class="column-style-dados-grid">
+                                                {{item.quantidadeSolicitado}}
+                                            </td>
+                                            <td class="column-style-dados-grid">
+                                                {{item.preco | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}
+                                            </td>
+                                            <td class="column-style-dados-grid">
+                                                {{(item.quantidadeSolicitado * item.preco) | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}
+                                            </td>
+                                            <td class="column-style-dados-grid">
+                                                <div class="icon-grid-action-delete" (click)="removerItem(item.idProduto)">
+                                                    <span class="material-icons icon-delete">
+                                                        delete
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                            }@else{
+                                <tr>
+                                    <td colspan="5" class="column-style-dados-grid" style="text-align: center; padding-top: 10px;">
+                                        <span>Não há produtos adicionados no momento.</span>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+
+                         <div>
+                            <div class="div-valor-total">
+                                <div class="div-valor-total-text">
+                                    <span>Valor Total:</span>
+                                </div>
+                                <div class="div-valor-total-currency">
+                                    <span>{{valorTotal() | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</span>
+                                </div>
+
+                            </div>  
+                         </div>
+
+                        <div class="div-wrapper-button-salvar">
+                            <div class="btn-style" (click)="(clientesDropdown().length > 0 && produtosDropdown().length > 0) ? salvarPedido() : null">
+                                <div class="wrapper-icon-button">
+                                    <span class="material-icons" style="font-size: 22px;">
+                                        save
+                                    </span>
+                                </div>
+
+                                <div class="btn-text">
+                                    <span>Salvar Pedido</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            
+        </form>
+        
+    </div>
+</div>

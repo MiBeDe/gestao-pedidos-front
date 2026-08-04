@@ -1,0 +1,24 @@
+.input-style{
+    font-size: 18px;
+    color: #061649;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="password"]
+input[type="text"]:focus, input[type="password"]:focus {
+  border: none;
+  outline: none;
+}
+
+.div-input{
+  padding: 6px; 
+  padding-top: 9px;
+}
+
+.div-input-disabled{
+  padding: 6px; 
+  padding-top: 9px;
+  background-color: #efefef8f !important;
+}

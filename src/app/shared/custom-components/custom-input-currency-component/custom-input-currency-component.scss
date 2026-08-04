@@ -1,0 +1,12 @@
+.input-style{
+    font-size: 18px;
+    color: #061649;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="password"]
+input[type="text"]:focus, input[type="password"]:focus {
+  border: none;
+  outline: none;
+}

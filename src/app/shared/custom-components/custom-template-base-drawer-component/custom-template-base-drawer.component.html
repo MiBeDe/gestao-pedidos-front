@@ -1,0 +1,61 @@
+<div class="container-principal">
+    <div class="container" style="width: 300px;" >
+        <div class="header">
+           <div class="header-wrapper-drawer-content">
+                <div class="header-wrapper-drawer-content-icon">
+                   <span class="material-icons icon-trolley">
+                      trolley
+                   </span>
+                </div>
+            </div>
+            <div class="header-drawer-content-text">
+                <span>Gestão de Pedidos</span>
+            </div>
+        </div>
+        <div class="navigation">
+            <div class="navigation-item" routerLink="/pedidos" [style.background-color]="pathName() == 'pedidos' ? 'rgba(255, 255, 255, 0.2)' : '#001F3E' ">
+                <div class="material-symbols-outlined navigation-item-icon">
+                    receipt
+                </div>
+                
+                <div class="navigation-item-label">
+                    Pedidos
+                </div>
+            </div>
+            <div class="navigation-item" routerLink="/clientes" [style.background-color]="pathName() == 'clientes' ? 'rgba(255, 255, 255, 0.2)' : '#001F3E' ">
+                <div class="material-icons navigation-item-icon">
+                    person
+                </div>
+                <div class="navigation-item-label">
+                    Clientes
+                </div>
+            </div>
+
+            <div class="navigation-item" routerLink="/produtos" [style.background-color]="pathName() == 'produtos' ? 'rgba(255, 255, 255, 0.2)' : '#001F3E' ">
+                <div class="material-symbols-outlined navigation-item-icon">
+                    inventory_2
+                </div>
+                
+                <div class="navigation-item-label">
+                    Produtos
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="navbar-content">
+            <div class="navbar-container">
+                <div>
+                    <div class="material-icons icon-full-screen" (click)="changeFullScreen()">
+                        {{ fullScreenType() ? 'fullscreen_exit' : 'fullscreen' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="body-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,270 @@
+@use '../../../../shared/fonts/shared-styles' as shared;
+
+.card-cadastro{
+    @include shared.card(70vw, auto);
+}
+
+.container-configs{
+    padding-top: 2vh;
+}
+
+.card-configs{
+    @include shared.card(70vw, 10vh);
+    background-color: #eff4fe;
+    display: flex;
+}
+
+.div-icon-info{
+    color: #0e63f8;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+}
+
+.header-info{
+    font-size: 16px;
+    font-weight: shared.$font-bold;
+    padding-top: 8px;
+    padding-left: 2vh;
+}
+
+.header-info-text{
+    font-size: 15px;
+    font-weight: shared.$font-medium;
+    padding-top: 5px;
+    padding-left: 2vh;
+}
+
+.icon-info{
+    font-size: 55px;
+}
+
+.icon-warning{
+    color: orange;
+    font-size: 17px;
+}
+.icon-done{
+    color: green;
+    font-size: 17px;
+}
+
+.header-info-text-with-icon{
+    display: flex;
+    align-items: center;
+}
+
+.wrapper-card-body{
+    padding-right: 0.2vw;
+    padding-top: 3vh
+}
+
+.container{
+    padding-left: 0.2vw
+}
+
+.container-inputs-line1{
+    padding-bottom: 3vh;
+    padding-left: 15px;
+    display: flex;
+}
+
+.container-inputs-line2{
+    padding-bottom: 3vh;
+   
+    display: flex;
+}
+
+.title-page{
+    font-size: 25px;
+    font-weight: shared.$font-bold;
+}
+
+.sub-title-page{
+    font-size: 16px;
+    padding-top: 8px;
+    color: #787b84;
+}
+
+.input-dropdown-cliente{
+    padding-top: 2vh;
+}
+
+.div-input-dropdown-header-cliente{
+    font-size: 14px;
+    font-weight: shared.$font-bold;
+    color: #061649;
+    padding-left: 2px;
+    padding-bottom: 5px;
+    padding-top: 8px;
+}
+
+.header-title-add-pedido{
+    padding-top: 15px; 
+    padding-left: 15px;
+    font-weight: shared.$font-semibold;
+}
+
+.input-dropdown-produto{
+    padding-top: 2vh;
+    padding-left: 1vw;
+}
+
+.div-input-dropdown-header-produto{
+    font-size: 14px;
+    font-weight: shared.$font-bold;
+    color: #061649;
+    padding-left: 2px;
+    padding-bottom: 5px;
+    padding-top: 8px;
+}
+
+.input-quantidade{
+    padding-top: 2vh;
+    padding-left: 1vw;
+}
+
+.div-input-header-quantidade{
+    font-size: 14px;
+    font-weight: shared.$font-bold;
+    color: #061649;
+    padding-left: 2px;
+    padding-bottom: 5px;
+    padding-top: 8px;
+}
+
+.div-wrapper-button{
+    padding-left: 2rem;
+    display: flex; 
+    align-items: end;
+}
+
+.wrapper-icon-button{
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.btn-style {   
+    border-color: #0b5add; 
+    background-color: #0b5add; 
+    text-align: center; 
+    color: white; 
+    border-radius: 8px; 
+    cursor: pointer;
+    height: 4vh;
+    width: 8vw;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-text {
+    display: flex; 
+    height: -webkit-fill-available;
+    align-items: center;
+    justify-content: center; 
+    font-size: 15px;
+}
+
+.container-grid{
+    padding-left: 15px; 
+    padding-top: 15px;
+    padding-bottom: 3vh;
+}
+
+.column-style-grid-first{
+    font-weight: shared.$font-bold;
+    font-size: 13px;
+    border-top-left-radius: 8px;
+    text-align: start;
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.column-style-grid-end{
+    font-weight: shared.$font-bold;
+    font-size: 13px;
+    border-top-right-radius: 8px;
+    text-align: start;
+}
+
+.column-style-grid{
+    font-weight: shared.$font-bold;
+    font-size: 13px;
+    border-color: #F4F6FA;
+    border-style: solid;
+    border-width: thin;
+    text-align: start;
+}
+
+.column-style-dados-grid{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom-color: #F4F6FA;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+}
+
+.column-style-dados-grid-with-initial-space{
+    padding-top: 8px;
+    padding-left: 5px;
+    padding-bottom: 8px;
+    border-bottom-color: #F4F6FA;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+}
+
+
+table{
+    border-spacing: unset;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-left-color: #F4F6FA;
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-right-color: #F4F6FA;
+    border-right-style: solid;
+    border-right-width: 3px;
+}
+
+.field-style-text-dados{
+    font-weight: shared.$font-regular;
+    font-size: 13px;
+}
+
+.icon-delete{
+    color: #eb4f4c
+}
+
+.icon-grid-action-delete{
+    display: flex; 
+    justify-content: center;
+    cursor: pointer;
+}
+
+.div-valor-total{
+    font-weight: shared.$font-semibold;
+    display: flex;
+    justify-content: end;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.div-valor-total-text{
+    color: #061649;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.div-valor-total-currency{
+    padding-left: 19px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.div-wrapper-button-salvar{
+    padding-right: 2rem;
+    display: flex; 
+    justify-content: end;
+}

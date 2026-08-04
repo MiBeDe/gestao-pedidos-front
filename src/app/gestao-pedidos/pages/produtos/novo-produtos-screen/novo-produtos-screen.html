@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="title-page">
+        <span>Novo Produto</span>
+    </div>
+    <div class="sub-title-page">
+         <span>Realizar cadastro de um novo Produto</span>
+    </div>
+
+    <div class="wrapper-card-body">
+        <div class="card-cadastro">
+            <form [formGroup]="form">
+                <div>
+                    <div class="input-nome-produto">
+                        <div class="div-input-header-nome-produto">
+                            <span>Nome do Produto</span><span style="color: red !important">*</span>
+                        </div>
+                        <div>
+                            <app-custom-input 
+                                formControlName="inputNomeProduto"
+                                inputWidth="550px"
+                                inputHeight="20px"
+                            />
+                        </div>
+                    </div>
+                    <div class="input-descricao">
+                        <div class="div-input-header-descricao">
+                            <span>Descrição</span><span style="color: red !important">*</span>
+                        </div>
+                        <div>
+                            <app-custom-input-textarea-component 
+                                formControlName="inputDescricao"
+                                inputWidth="565px"
+                                inputHeight="100px"
+                            />
+                        </div>
+                    </div>
+                    <div class="input-preco">
+                        <div class="div-input-header-preco">
+                            <span>Preço</span><span style="color: red !important">*</span>
+                        </div>
+                        <div>
+                            <app-custom-input-currency-component 
+                                formControlName="inputPreco"
+                                inputWidth="550px"
+                                inputHeight="20px"
+                            />
+                        </div>
+                    </div>
+                    <div class="input-quantidade">
+                        <div class="div-input-header-quantidade">
+                            <span>Quantidade</span><span style="color: red !important">*</span>
+                        </div>
+                        <div>
+                            <app-custom-input 
+                                formControlName="inputQuantidade"
+                                inputWidth="550px"
+                                inputHeight="20px"
+                                [mask]="'0000'"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="div-wrapper-button">
+                <div class="btn-style" (click)="salvarProduto()">
+                    <div class="wrapper-icon-button">
+                        <span class="material-icons" style="font-size: 22px;">
+                            save
+                        </span>
+                    </div>
+                    
+                    <div class="btn-text">
+                        <span>Salvar</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
