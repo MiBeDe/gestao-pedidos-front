@@ -3,6 +3,6 @@ export const environment = {
     homolog: false,
     dev: true,
     build: false,
-    apiUrl: '<URL_API>',
+    apiUrl: '<URL_API>/api/v1/',
     srcImgs: 'assets/images/'
   }
