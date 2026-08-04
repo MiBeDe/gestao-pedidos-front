@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, inject, OnInit, signal } from '@angular/core';
-import { Router, RouterModule } from "@angular/router";
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { Router } from "@angular/router";
 import { environment } from '../../../../environments/environment';
 import { customTemplateBaseDrawerImports } from './custom-template-base-drawer.imports';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-template-base-drawer',
